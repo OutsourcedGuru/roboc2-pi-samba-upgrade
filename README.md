@@ -118,3 +118,8 @@ Now in Finder (OS X), press Cmd-K to map a drive, entering something similar to:
 smb://charming-pascal.local/microsd
 
 Enter "pi" as the user and "raspberry" as the password.
+
+Copy a GCODE file into this mapped drive to verify that you have the rights to do so.
+
+## Verifying that it was uploaded
+Within the OctoPrint interface, go to the Files area, drill down into the new `share` folder and verify that your file was uploaded successfully.  Depending upon your timing, you may need to press the Refresh button in the File area of the interface.
