@@ -112,6 +112,7 @@ Assuming that it's happy, now restart the SMBD service to load those changes.
 $ sudo service smbd restart
 ```
 
+## Testing the share
 Now in Finder (OS X), press Cmd-K to map a drive, entering something similar to:
 
 smb://charming-pascal.local/microsd
