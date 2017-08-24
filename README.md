@@ -38,22 +38,35 @@ For this reason, if you intend to share the USB drive itself, I would suggest th
 ## Instructions
 Make sure that your USB drive is inserted into the printer's front port and the printer is turned on.  Now run the following command from a terminal session on your workstation.  If you're on a Windows-based computer, use [putty](http://www.putty.org) to connect to your printer by name or by IP address, using "pi" as the username.
 
+Make an attempt at connecting to your printer by its name (found on the label as "serial number").  Just make sure to append this with ".local" at the end.  Since my printer's name is "charming-pascal", I'll be using this below but you should replace this with your own printer's name.
+
+If this fails, try to find your printer's issued IP address using the LCD interface:  Utilities -> Network Utilities -> Network Status.  See below for the alternate version using the IP address. 
+
 ```
 # Note that the default password for the pi user is "raspberry"
-$ ssh pi@my-c2.local
+$ ssh pi@charming-pascal.local
+# Alternately, using the IP address
+$ ssh pi@192.168.0.51
 ```
 
-All the commands below then are entered while in this remote session.
+If this fails to connect with a "Permission denied" error, make sure that you're including the "pi@" part of this.  All the commands below then are entered while in this remote session to your printer.
 
 ```
+sudo apt-get update
+sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.save
 sudo apt-get install samba samba-common-bin
 ```
 
-```
-sudo mkdir -m 1777 /share
-```
+Create a new subfolder called share under the place where Octoprint sees files.
 
 ```
+sudo mkdir -m 1777 /home/pi/.octoprint/uploads/share
+```
+
+Create a new SMB user "pi" for the `net use` share commands.
+
+```
+# When prompted, enter "raspberry" for the password for this to set the password used by Windows share users
 sudo smbpasswd -a pi
 ```
 
@@ -65,15 +78,17 @@ sudo nano /etc/samba/smb.conf
 [global]
 workgroup=WORKGROUP
 encrypt passwords=yes
-wins support=yes
+wins support=no
 # Set NETBIOS name below to match its DNS hostname in /etc/hostname
 # netbios name=%h
 # Set the description to Samba v[Version] on [NetBIOS name]
 server string=Samba %v on %L
 
+# Append this at the end
+
 [microsd]
 Comment=Pi share to the microSD share folder
-Path=/mnt/usbdisk1/share
+Path=/home/pi/.octoprint/uploads/share
 Browseable=yes
 Writeable=yes
 Read only=no
@@ -84,7 +99,20 @@ Public=yes
 Guest ok=yes
 ```
 
+Having saved the file, now parse it to verify that SMB likes what you did.
+
 ```
-sudo testpart /etc/samba/smb.conf
+sudo testparm /etc/samba/smb.conf
+```
+
+Assuming that it's happy, now restart the SMBD service to load those changes.
+
+```
 sudo service smbd restart
 ```
+
+Now in Finder (OS X), press Cmd-K to map a drive, entering something similar to:
+
+smb://charming-pascal.local/microsd
+
+Enter "pi" as the user and "raspberry" as the password.
