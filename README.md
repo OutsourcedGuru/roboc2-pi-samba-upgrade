@@ -52,8 +52,14 @@ sudo nano /etc/samba/smb.conf
 ```
 
 ```
-workgroup=your_workgroup_name
+[global]
+workgroup=WORKGROUP
+encrypt passwords=yes
 wins support=yes
+# Set NETBIOS name below to match its DNS hostname in /etc/hostname
+# netbios name=%h
+# Set the description to Samba v[Version] on [NetBIOS name]
+server string=Samba %v on %L
 
 [microsd]
 Comment=Pi share to the microSD share folder
@@ -69,5 +75,6 @@ Guest ok=yes
 ```
 
 ```
+sudo testpart /etc/samba/smb.conf
 sudo service smbd restart
 ```
