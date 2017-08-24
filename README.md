@@ -29,7 +29,7 @@ Clearly, this is a hassle in that I have to shuttle that USB drive and move file
 3. On the MacBook, open a browser session to OctoPrint running on the printer and select the GCODE file from the microSD drive
 
 ## Possible Complications
-Although one never ejects the microSD card from the printer while it's still running, it's not unheard of to want to eject the USB drive while it's on.  A `net share` must be managed properly to make sure that data isn't lost.  Furthermore, OctoPrint's method of uploading files automatically from the USB into the /home/pi/.octoprint/upload/USB folder area makes state management a little complicated.
+Although one never ejects the microSD card from the printer while it's still running, it's not unheard of to want to eject the USB drive while it's on.  A net share must be managed properly to make sure that data isn't lost.  Furthermore, OctoPrint's method of uploading files automatically from the USB into the /home/pi/.octoprint/upload/USB folder area makes state management a little complicated.
 
 For these reasons, if you intend to share the USB drive itself, I would suggest that you simply leave it in the printer at all times.  The Samba configuration file will expect the USB drive to be mounted so this will make things simpler if you observe this restriction.
 
