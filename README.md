@@ -71,11 +71,11 @@ Create a new SMB user "pi" for the `net use` share commands.
 $ sudo smbpasswd -a pi
 ```
 
-```
-$ sudo nano /etc/samba/smb.conf
-```
+Edit the Samba configuration file.  Edit the `global` section as required, then append the `microsd` share section at the end of the file.
 
 ```
+$ sudo nano /etc/samba/smb.conf
+
 [global]
 workgroup=WORKGROUP
 encrypt passwords=yes
