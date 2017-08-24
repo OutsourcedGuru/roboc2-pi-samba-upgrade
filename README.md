@@ -35,6 +35,16 @@ Although one never ejects the microSD card from the printer while it's still run
 
 For this reason, if you intend to share the USB drive itself, I would suggest that you simply leave it in the printer at all times.  The Samba configuration file will expect the USB drive to be mounted so this will make things simpler.
 
+## Instructions
+Make sure that your USB drive is inserted into the printer's front port and the printer is turned on.  Now run the following command from a terminal session on your workstation.  If you're on a Windows-based computer, use [putty](http://www.putty.org) to connect to your printer by name or by IP address, using "pi" as the username.
+
+```
+# Note that the default password for the pi user is "raspberry"
+$ ssh pi@my-c2.local
+```
+
+All the commands below then are entered while in this remote session.
+
 ```
 sudo apt-get install samba samba-common-bin
 ```
