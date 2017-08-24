@@ -52,26 +52,27 @@ $ ssh pi@192.168.0.51
 If this fails to connect with a "Permission denied" error, make sure that you're including the "pi@" part of this.  All the commands below then are entered while in this remote session to your printer.
 
 ```
-sudo apt-get update
-sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.save
-sudo apt-get install samba samba-common-bin
+$ sudo apt-get update
+$ sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.save
+$ sudo apt-get install samba samba-common-bin
 ```
 
 Create a new subfolder called share under the place where Octoprint sees files.
 
 ```
-sudo mkdir -m 1777 /home/pi/.octoprint/uploads/share
+$ sudo mkdir -m 1777 /home/pi/.octoprint/uploads/share
 ```
 
 Create a new SMB user "pi" for the `net use` share commands.
 
 ```
-# When prompted, enter "raspberry" for the password for this to set the password used by Windows share users
-sudo smbpasswd -a pi
+# When prompted, enter "raspberry" for the password for this to
+# set the password used by Windows share users
+$ sudo smbpasswd -a pi
 ```
 
 ```
-sudo nano /etc/samba/smb.conf
+$ sudo nano /etc/samba/smb.conf
 ```
 
 ```
@@ -102,13 +103,13 @@ Guest ok=yes
 Having saved the file, now parse it to verify that SMB likes what you did.
 
 ```
-sudo testparm /etc/samba/smb.conf
+$ sudo testparm /etc/samba/smb.conf
 ```
 
 Assuming that it's happy, now restart the SMBD service to load those changes.
 
 ```
-sudo service smbd restart
+$ sudo service smbd restart
 ```
 
 Now in Finder (OS X), press Cmd-K to map a drive, entering something similar to:
