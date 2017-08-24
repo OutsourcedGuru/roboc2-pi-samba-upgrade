@@ -96,12 +96,13 @@ $ sudo nano /etc/samba/smb.conf
 [global]
 workgroup=WORKGROUP
 encrypt passwords=yes
-wins support=no
+wins support=yes
 # Set NETBIOS name below to match its DNS hostname in /etc/hostname
 # noting that I've got this commented out at the moment. 
 # netbios name=%h
 # Set the description to Samba v[Version] on [NetBIOS name]
 server string=Samba %v on %L
+nameresolve order=wins hosts bcast
 
 # Append this part at the end of the file
 
