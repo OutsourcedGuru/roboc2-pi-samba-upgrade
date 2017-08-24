@@ -11,7 +11,7 @@ Note as well that OS X computers may also map these Windows-based share points s
 No parts are actually required for this upgrade.  And no 3D printed parts are required either.
 
 ## Software
-I assume that you already have either `SSH` (OS X) or `putty` (Windows) so that you can connect remotely to the Raspberry Pi 3 that's inside your Robo C2 printer.
+I assume that you already have either `ssh` (OS X) or `putty` (Windows) so that you can connect remotely to the Raspberry Pi 3 that's inside your Robo C2 printer.
 
 ## Workstation
 I assume that you have either a Windows- or an OX X--based workstation which you use to run a slicing program like Cura.  In my case, I'm using a MacBook.  Before this update, my existing workflow might look like this:
