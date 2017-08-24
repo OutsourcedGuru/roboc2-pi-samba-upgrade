@@ -5,7 +5,7 @@ The intent is to update the existing Samba software on the Raspberry Pi 3 comput
 
 Note that this same method may be used to share the USB drive itself while it's in the printer.  I will be showing the method for doing both.
 
-Note as well that OS X computers may also map these Windows-based share points it it works for those workstations, too.
+Note as well that OS X computers may also map these Windows-based share points so it works for those workstations, too.
 
 ## Parts
 No parts are actually required for this upgrade.  And no 3D printed parts are required either.
