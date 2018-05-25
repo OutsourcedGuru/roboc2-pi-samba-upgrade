@@ -161,3 +161,7 @@ Within the OctoPrint interface, go to the Files area, drill down into the new `s
 ## Disconnecting from the mapped drive
 Feel free to disconnect from the mapped drive if you're no longer interested in copying files to the printer.  In OS X, this involves "Ejecting" the drive.  In Windows, this involves "Disconnecting" from it.
 
+|Donate||Cryptocurrency|
+|:-----:|---|:--------:|
+| ![eth-receive](https://user-images.githubusercontent.com/15971213/40564950-932d4d10-601f-11e8-90f0-459f8b32f01c.png) || ![btc-receive](https://user-images.githubusercontent.com/15971213/40564971-a2826002-601f-11e8-8d5e-eeb35ab53300.png) |
+|Ethereum||Bitcoin|
